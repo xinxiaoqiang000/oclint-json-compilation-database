@@ -24,7 +24,9 @@ arg_parser.add_argument('oclint_args', nargs='*', help="arguments that are passe
 args = arg_parser.parse_args()
 
 def get_source_path(file_attr, dir_attr):
-    if file_attr.startswith(os.sep):
+    if file_attr is None:
+        return ""
+    elif file_attr.startswith(os.sep):
         return file_attr
     elif dir_attr.endswith(os.sep):
         return dir_attr + file_attr
